@@ -1,0 +1,24 @@
+@startuml
+title TNTMan dies to enemy
+autonumber
+participant driver order 40
+participant pygame order 50
+participant map order 30
+activate TNTMan
+enemy -> TNTMan: touch()
+activate enemy
+enemy ->> driver: TNTManTouched()
+activate driver
+driver ->> pygame: TNTManTouched()
+deactivate driver
+activate pygame
+enemy ->> map: killTNTMan()
+activate map
+deactivate enemy
+map -> TNTMan: die()
+deactivate map
+TNTMan ->> driver: dead()
+activate driver
+destroy TNTMan
+driver ->> pygame: TNTManDead()
+@enduml

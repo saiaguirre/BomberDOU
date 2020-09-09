@@ -1,0 +1,14 @@
+@startuml
+title picking up invincibility buff
+participant driver order 30
+participant pygame order 40
+participant map order 20
+participant invincibility order 15
+TNTMan ->> invincibility: pickUpBuff()
+activate TNTMan
+activate invincibility
+invincibility ->> map: pickedUp()
+map -> TNTMan: invincibility()
+invincibility ->> driver: pickedUp()
+driver ->> pygame: buffPickedUp()
+@enduml

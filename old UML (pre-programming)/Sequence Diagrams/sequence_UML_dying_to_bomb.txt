@@ -1,0 +1,23 @@
+@startuml
+title TNTMan dies to bomb
+autonumber
+participant driver order 40
+participant pygame order 50
+participant map order 30
+activate TNTMan
+TNTMan -> bomb: deploybomb()
+bomb -> driver: deployed()
+activate bomb
+bomb -> map: EntitiesInRange()
+map --> bomb: list of entities in range
+driver -> pygame: bombdeployed()
+bomb -> bomb: detonate()
+bomb -> driver: detonated()
+driver -> pygame: bombDetonated()
+bomb -> map: killTNTMan()
+destroy bomb
+map -> TNTMan: die()
+TNTMan -> driver: dead()
+destroy TNTMan
+driver -> pygame: TNTManDead()
+@enduml

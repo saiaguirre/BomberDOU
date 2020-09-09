@@ -1,0 +1,16 @@
+@startuml
+title Bomb
+[*] --> deployed 
+state deployed {
+  state idle
+  state buffed {
+    state damageUpgraded
+    state rangeUpgraded
+    state damageAndRangeUpgraded
+  }
+  state notBuffed
+}
+deployed -> exploded
+
+
+@enduml

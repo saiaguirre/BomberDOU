@@ -1,0 +1,25 @@
+@startuml
+title TNTMan breaks block
+autonumber
+Activate TNTMan
+TNTMan ->> Bomb: deployBomb()
+activate Bomb
+TNTMan -> TNTMan: move()
+deactivate TNTMan
+Bomb -> Map: setPosition()
+activate Map
+Map --> Bomb: bbreakableNearBomb()
+Bomb -> Map: detonate()
+destroy Bomb
+Map -> Block: breakBlock()
+deactivate Map
+activate Block
+Block --> Map: getStatus()
+destroy Block
+Map -> Driver: blockBroken()
+activate Driver
+Driver -> Pygame: blockBroken()
+deactivate Driver
+activate Pygame
+deactivate Pygame
+@enduml

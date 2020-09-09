@@ -1,0 +1,26 @@
+@startuml
+title TNTMan kills enemy
+autonumber
+participant driver order 40
+participant pygame order 50
+participant map order 30
+participant enemy order 20
+activate enemy
+activate TNTMan
+TNTMan -> bomb: deploybomb()
+TNTMan -> TNTMan: move()
+bomb -> driver: deployed()
+activate bomb
+bomb -> map: EntitiesInRange()
+map --> bomb: list of entities in range
+driver -> pygame: bombdeployed()
+bomb -> bomb: detonate()
+bomb -> driver: detonated()
+driver -> pygame: bombDetonated()
+bomb -> map: killEnemy()
+destroy bomb
+map -> enemy: die()
+enemy -> driver: dead()
+destroy enemy
+driver -> pygame: enemyDead()
+@enduml

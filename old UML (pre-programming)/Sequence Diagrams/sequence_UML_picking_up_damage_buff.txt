@@ -1,0 +1,15 @@
+@startuml
+title picking up damage buff
+participant driver order 30
+participant pygame order 40
+participant map order 20
+participant moreDetDamage order 15
+participant bomb order 10
+TNTMan ->> moreDetDamage: pickUpBuff()
+activate TNTMan
+activate moreDetDamage
+moreDetDamage ->> map: pickedUp()
+map -> bomb: moreDetDamage()
+moreDetDamage ->> driver: pickedUp()
+driver ->> pygame: buffPickedUp()
+@enduml

@@ -1,0 +1,7 @@
+@startuml
+title Use cases: Player
+skinparam packageStyle rectangle x
+Player --> (Start): On the game\n main menu
+Player --> (Initiate): by executing\nthe program
+Player --> (end): by pressing the x\non the upper right\n corner
+@enduml

@@ -1,0 +1,57 @@
+@startuml
+start
+	:clickStart;
+	:spawnCharacter;
+	while (status) is (alive) 
+	:move;
+	:findSomething;
+	fork
+		:buff;
+		
+  if (moreSpeed) then (yes)
+      :addSpeed;
+		elseif (invulnerability) then (yes)
+      :beInvulnerable;
+		elseif (moreDetDamage) then (yes)
+      :addDetDmg;
+		elseif (moreDetRange) then (yes)
+      :addDetRange;
+		endif
+	fork again
+		:obstacle;
+		if (break?) then (yes)
+			:putBomb;
+			if (moveOutOfRange) then (True)
+			else (False)
+				:die;
+			endif
+		else (no)
+		:moveTowardsDiferentDirection;
+	endif
+	fork again
+		:enemy;
+    if (kill?) then (yes)
+			if (putBomb) then (yes)
+			  if (moveOutofRange) then (True)
+				else (False)
+				  :die;
+			  endif
+			else (no)
+				:moveTowardsDiferentDirection;
+    endif
+      elseif (getHit) then (yes)
+				:die;
+			else (no)
+    endif
+
+	
+end fork
+	:encountersNextLevelBlock;
+	:PassLevel;
+	endwhile (dead)
+	stop
+
+
+
+
+@enduml

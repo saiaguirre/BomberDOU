@@ -1,0 +1,15 @@
+@startuml
+title picking up range buff
+participant driver order 30
+participant pygame order 40
+participant map order 20
+participant moreDetRange order 15
+participant bomb order 10
+TNTMan ->> moreDetRange: pickUpBuff()
+activate TNTMan
+activate moreDetRange
+moreDetRange ->> map: pickedUp()
+map -> bomb: moreDetRange()
+moreDetRange ->> driver: pickedUp()
+driver ->> pygame: buffPickedUp()
+@enduml

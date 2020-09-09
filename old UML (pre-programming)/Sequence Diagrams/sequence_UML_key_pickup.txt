@@ -1,0 +1,20 @@
+@startuml
+title TNTMan picks up key
+autonumber
+participant driver order 40
+participant pygame order 50
+activate TNTMan
+TNTMan ->> bKey: pickUp()
+activate bKey
+bKey -> driver: pickedUp()
+TNTMan -> TNTMan: move()
+activate driver
+activate pygame 
+driver -> pygame: bKeyPickedUp()
+bKey -> door: Open()
+activate door
+destroy bKey
+door -> driver: Opened()
+driver -> pygame: doorOpened()
+pygame --> driver: doorOpened()
+@enduml

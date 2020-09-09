@@ -1,0 +1,21 @@
+@startuml
+title TNTMan passing level
+autonumber
+Activate TNTMan
+TNTMan ->> BExit: touch()
+activate BExit
+deactivate TNTMan
+BExit ->> Map: touched()
+deactivate BExit
+activate Map
+Map ->> Driver: BExitTouched()
+deactivate Map
+activate Driver
+Driver ->> Pygame: changeLevel()
+activate Pygame
+Pygame --> Driver: levelChanged()
+deactivate Pygame
+Driver --> Map: levelChanged()
+deactivate Driver
+
+@enduml

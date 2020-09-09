@@ -1,0 +1,79 @@
+@startuml
+
+
+
+Title TNTMan - UML Class Diagram
+
+class Driver{
+  -dimentions: tuple
+  -map: map
+  -view: view
+  +main_loop(): None
+
+}
+  class Cells{
+  -size:tuple(2)
+  -content: object
+  -position: list
+}
+
+class Map{
+  -size: tuple
+  -map_array: list
+  -TNTMan: TNTMan
+  -Bomb: Bomb
+  +_init_(): None
+  +build_map_array(): None
+  +get_B_breakable_list(): list
+  +get_B_unbreakable_list(): list
+  +is_position_valid(): Boolean
+  +get_position_tntman():
+  +move_tm(): None
+  +destroy_bomb(): None
+  +is_there_any_bomb(): Boolean
+  +get_position_bomb():
+  +deploy_bomb(): None
+  }
+
+class TNTMan{
+  -actual_pos: list[]
+  +bomb_deployed: Bolean
+  +get_bomb_deployed(): bomb_deployed
+  +deploy_bomb(): None
+  +move_to(): None
+  +get_new_possible_postion(): list[]
+  +get_position(): actual_post
+}
+
+class Bomb{
+  -position: list[]
+  -is_bomb_placed: boolean
+  +getPosition(): list[]
+  +set_postion(): None
+  }
+
+
+class Blocks{
+  -can_be_broken: None
+}
+
+class BBreakable{
++die(): Nonee
+}
+
+class BUnbreakable{
+  -live: Boolean
+  -life: Integer
+}
+
+
+Map --> Bomb
+Map --> Cells
+Map --> TNTMan
+Map --> Blocks
+Driver --> View
+Blocks <|-- BBreakable
+Blocks <|-- BUnbreakable
+Driver --> Map
+@enduml
+
